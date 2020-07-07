@@ -27,8 +27,8 @@ public class ReverseString {
             return;
         // l 108 - e 101  d=7
         for(int i=0,j=s.length-1;i!=j&&i<=(s.length-1)/2;i++,j--){
-            if(s[i]==s[j])
-                continue;
+            /*if(s[i]==s[j])
+                continue;*/
             if(s[i]>s[j]){
                 d=s[i]-s[j];
                 s[j]=s[i];

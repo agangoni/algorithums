@@ -1,0 +1,19 @@
+Base tables:
+
+sales.  50 B rows
+product 100 M rows
+date_dim 50 K rows
+
+// Top 100 selling products in a 6 month time
+SELECT p.product_name, SUM(sales_amount) total_sales
+FROM sales s, product p, date_dim d
+-- FROM sales s, date_dim d, product p
+WHERE s.product_id = p.product_id and s.date_id = d.date_id
+AND d.ship_date between '2020-01-01' AND '2020-06-30'
+GROUP BY p.product_name
+ORDER BY total_sales DESC
+LIMIT 100;
+
+
+Q: How would you execute this query on a distributed cluster of N nodes ? 
+    (assume that data is on a distributed file system)
